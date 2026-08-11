@@ -59,7 +59,7 @@
 
   var sidebar=document.querySelector(".sidebar");
   if(sidebar&&!sidebar.querySelector(".utility-widgets")){
-    var widgets=document.createElement("div");widgets.className="utility-widgets";widgets.innerHTML='<section class="weather-widget" aria-label="Información del clima"><div class="weather-widget__top"><strong class="weather-widget__title">Clima</strong><span class="weather-widget__temp">28 °C</span></div><div class="weather-widget__meta">Santiago de los Caballeros · Parcialmente nublado</div></section><section class="lottery-widget" aria-label="Resultados de lotería"><div class="lottery-widget__top"><strong class="lottery-widget__title">Resultados de lotería</strong><span class="weather-widget__meta">Hoy</span></div><div class="lottery-results"><div class="lottery-result"><strong>14</strong><span>Primera</span></div><div class="lottery-result"><strong>27</strong><span>Segunda</span></div><div class="lottery-result"><strong>36</strong><span>Tercera</span></div></div></section>';sidebar.insertBefore(widgets,sidebar.firstChild);
+    var widgets=document.createElement("div");widgets.className="utility-widgets";widgets.innerHTML='<section class="weather-widget" aria-label="Información del clima"><div class="weather-widget__top"><strong class="weather-widget__title">Clima</strong><span class="weather-widget__temp">28 °C</span></div><div class="weather-widget__meta">Santiago de los Caballeros · Parcialmente nublado</div></section><section class="lottery-widget" aria-label="Resultados de lotería"><div class="lottery-widget__top"><strong class="lottery-widget__title">Resultados de lotería</strong><span class="weather-widget__meta">Hoy</span></div><div class="lottery-results"><div class="lottery-result"><strong>14</strong><span>Primera</span></div><div class="lottery-result"><strong>27</strong><span>Segunda</span></div><div class="lottery-result"><strong>36</strong><span>Tercera</span></div></div></div></section>';sidebar.insertBefore(widgets,sidebar.firstChild);
     var ads=document.createElement("div");ads.innerHTML='<div class="ad-slot ad-slot--sidebar">Espacio publicitario · 300 × 250</div><div class="ad-slot ad-slot--sidebar">Espacio publicitario · 300 × 600</div>';sidebar.appendChild(ads)
   }
 
@@ -71,4 +71,6 @@
   document.querySelectorAll(".social-list a").forEach(function(a){var label=(a.getAttribute("aria-label")||"").toLowerCase();var key=label.indexOf("facebook")>=0?"facebook":label.indexOf("instagram")>=0?"instagram":label.indexOf("youtube")>=0?"youtube":label.indexOf("x")>=0?"x":null;if(key){a.innerHTML=icons[key];a.setAttribute("data-social",key)}});
 
   var track=document.getElementById("destacadasTrack");document.querySelectorAll(".carousel-btn").forEach(function(btn){btn.addEventListener("click",function(){if(!track)return;var card=track.querySelector(".story-card--carousel"),step=card?card.getBoundingClientRect().width+20:280;track.scrollBy({left:step*(parseInt(btn.dataset.dir,10)||1),behavior:"smooth"})})});
+
+  var shared=document.createElement("script");shared.src="components/site.js";shared.defer=true;document.body.appendChild(shared);
 })();
